@@ -17,7 +17,6 @@ phases:
           - pip3 install pyspark.sql.types
   pre_build:
     commands:
-      - python main.py test
       post_build:
         commands:
           - echo Build completed on `date`
