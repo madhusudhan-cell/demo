@@ -15,9 +15,6 @@ phases:
           - pip3 install psycopg2
           - pip3 install pyspark.sql.functions
           - pip3 install pyspark.sql.types
-
-    on-failure: ABORT | CONTINUE
-
   pre_build:
     commands:
       - python main.py test
