@@ -4,7 +4,6 @@ phases:
   install:
       runtime-versions:
       java: corretto8
-      python: 3.x
  pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
