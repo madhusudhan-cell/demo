@@ -27,12 +27,10 @@ build:
       - python -m psycopg2
       - python -m pyspark.sql.functions
       - python -m pyspark.sql.types
-
       post_build:
         commands:
           - echo Build completed on `date`
       - aws cloudformation package --template-file template.yaml --s3-bucket $BUILD_OUTPUT_BUCKET --output-template-file packaged.yaml
-
 artifacts:
   type: zip
   files:
@@ -43,8 +41,6 @@ artifacts:
     - 'persist.py'
     - 'transform.py'
     - 'main.py'
-
-
       cache:
         paths:
           - '/root/.cache/pip'
