@@ -6,22 +6,22 @@ phases:
         python: 3.8
         commands:
           # Install dependencies needed for running tests
-          #- pip install -r requirements/common.txt
-          - pip3 install configparser
-          - pip3 install pipeline
-          - pip3 install logging
-          - pip3 install pandas
-          - pip3 install psycopg2
-          - pip3 install pyspark
-  pre_build:
+          #- pip install -r requirements/common.txt     
+ pre_build:
     commands:
-      post_build:
-        commands:
+      - echo Nothing to do in the pre_build phase...
+ build:
+    commands:
+      - echo Build started on `date`
+      - pip3 install configparser
+      - pip3 install pipeline
+      - pip3 install logging
+      - pip3 install pandas
+      - pip3 install psycopg2
+      - pip3 install pyspark     
+ post_build:
+    commands:
+      - echo Build completed on `date`
 artifacts:
-  type: zip
   files:
-    - 'pipeline/resources/**/*'
-    - 'pipeline/*'  
-cache:
-  paths:
-     - '/root/.cache/pip'
+    - target/Incubation-1.0.jar
