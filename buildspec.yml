@@ -28,7 +28,6 @@ artifacts:
     - 'ingest.py'
     - 'persist.py'
     - 'transform.py'
-    - 'main.py'
       cache:
         paths:
           - '/root/.cache/pip'
