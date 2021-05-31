@@ -17,4 +17,5 @@ phases:
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/Incubation-1.0.jar
+    - '**/*'
+    base-directory: 'pipeline/'
