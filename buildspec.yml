@@ -12,8 +12,7 @@ phases:
           - pip3 install logging
           - pip3 install pandas
           - pip3 install psycopg2
-          - pip3 install pyspark.sql.functions
-          - pip3 install pyspark.sql.types
+          - pip3 install pyspark
   pre_build:
     commands:
       post_build:
