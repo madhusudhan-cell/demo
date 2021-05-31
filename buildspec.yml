@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # Install dependencies needed for running tests
+      #- pip install -r requirements/common.txt
+      - python3.8 -m pip install configparser
+      - python3.8 -m pip install pipeline
+      - python3.8 -m pip install logging
+      - python3.8 -m pip install pandas
+      - python3.8 -m pip install psycopg2
+      - python3.8 -m pip install pyspark.sql.functions
+      - python3.8 -m pip install pyspark.sql.types
+  pre_build:
+    commands:
+      # Discover and run unit tests. For more information, see <https://docs.djangoproject.com/en/2.0/topics/testing/overview/>
+      - python main.py test
+
+artifacts:
+  type: zip
+  files:
+    - 'resources/**/*'
+    - 'configurationParser.py'
+    - 'geocodeUdf.py'
+    - 'ingest.py'
+    - 'persist.py'
+    - 'transform.py'
+    - 'requirements.txt'
+    - 'supervisord.conf'
