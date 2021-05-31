@@ -25,7 +25,7 @@ build:
       - python -m logging
       - python -m pandas
       - python -m psycopg2
-      - python -m pyspark.sql.functions
+      - python -m pyspark
       post_build:
         commands:
           - echo Build completed on `date`
