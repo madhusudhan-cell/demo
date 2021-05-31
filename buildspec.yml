@@ -2,20 +2,39 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      # Install dependencies needed for running tests
-      #- pip install -r requirements/common.txt
-      - python3.8 -m pip install configparser
-      - python3.8 -m pip install pipeline
-      - python3.8 -m pip install logging
-      - python3.8 -m pip install pandas
-      - python3.8 -m pip install psycopg2
-      - python3.8 -m pip install pyspark.sql.functions
-      - python3.8 -m pip install pyspark.sql.types
+      runtime-versions:
+        python: 3.8
+        commands:
+          # Install dependencies needed for running tests
+          #- pip install -r requirements/common.txt
+          - echo "[Install phase]"
+          - pip3 install configparser
+          - pip3 install pipeline
+          - pip3 install logging
+          - pip3 install pandas
+          - pip3 install psycopg2
+          - pip3 install pyspark.sql.functions
+          - pip3 install pyspark.sql.types
+
+    on-failure: ABORT | CONTINUE
+
   pre_build:
     commands:
-      # Discover and run unit tests. For more information, see <https://docs.djangoproject.com/en/2.0/topics/testing/overview/>
       - python main.py test
+build:
+    commands:
+      - python -m configparser
+      - python -m pipeline
+      - python -m logging
+      - python -m pandas
+      - python -m psycopg2
+      - python -m pyspark.sql.functions
+      - python -m pyspark.sql.types
+
+      post_build:
+        commands:
+          - echo Build completed on `date`
+      - aws cloudformation package --template-file template.yaml --s3-bucket $BUILD_OUTPUT_BUCKET --output-template-file packaged.yaml
 
 artifacts:
   type: zip
@@ -26,5 +45,9 @@ artifacts:
     - 'ingest.py'
     - 'persist.py'
     - 'transform.py'
-    - 'requirements.txt'
-    - 'supervisord.conf'
+    - 'main.py'
+
+
+      cache:
+        paths:
+          - '/root/.cache/pip'
