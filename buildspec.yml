@@ -22,12 +22,9 @@ phases:
 artifacts:
   type: zip
   files:
-    - 'resources/**/*'
-    - 'configurationParser.py'
-    - 'geocodeUdf.py'
-    - 'ingest.py'
-    - 'persist.py'
-    - 'transform.py'
+    - 'pipeline/resources/**/*'
+    - 'pipeline/*'
+   
       cache:
         paths:
           - '/root/.cache/pip'
