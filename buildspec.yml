@@ -7,7 +7,6 @@ phases:
         commands:
           # Install dependencies needed for running tests
           #- pip install -r requirements/common.txt
-          - echo "[Install phase]"
           - pip3 install configparser
           - pip3 install pipeline
           - pip3 install logging
