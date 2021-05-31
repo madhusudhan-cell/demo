@@ -23,8 +23,7 @@ artifacts:
   type: zip
   files:
     - 'pipeline/resources/**/*'
-    - 'pipeline/*'
-   
-      cache:
-        paths:
-          - '/root/.cache/pip'
+    - 'pipeline/*'  
+cache:
+  paths:
+     - '/root/.cache/pip'
