@@ -9,7 +9,6 @@ phases:
       - echo Build started on `date`
       - pip3 install configparser
       - pip3 install pipeline
-      - pip3 install logging
       - pip3 install pandas
       - pip3 install psycopg2
       - pip3 install pyspark     
