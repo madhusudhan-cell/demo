@@ -3,10 +3,7 @@ version: 0.2
 phases:
   install:
       runtime-versions:
-        python: 3.8
-        commands:
-          # Install dependencies needed for running tests
-          #- pip install -r requirements/common.txt     
+        python: 3.8    
  pre_build:
     commands:
       - echo Nothing to do in the pre_build phase...
