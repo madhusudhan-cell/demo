@@ -1,0 +1,27 @@
+version: 0.0
+os: linux
+files:
+  - source: /index.html
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: pipeline/configurationParser.py
+      timeout: 300
+      runas: root
+    - location: pipeline/geocodeUdf.py
+      timeout: 300
+      runas: root
+       - location: pipeline/ingest.py
+      timeout: 300
+      runas: root
+       - location: pipeline/persist.py
+      timeout: 300
+      runas: root
+       - location: pipeline/transform.py
+      timeout: 300
+      runas: root
+ ApplicationStop:
+    - location:  main.py
+      timeout: 300
+      runas: root
+     
